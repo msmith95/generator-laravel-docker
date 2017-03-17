@@ -1,0 +1,10 @@
+  nginx:
+    container_name: <%= docker.name %>-httpd
+    image: richarvey/nginx-php-fpm:latest
+    volumes:
+      - ./:/var/www/html
+      - ./.docker/nginx/sites:/etc/nginx/sites-enabled
+    environment:
+      - VIRTUAL_HOST=<%= docker.name %>.docker
+    networks:
+      - <%= docker.name %>-network

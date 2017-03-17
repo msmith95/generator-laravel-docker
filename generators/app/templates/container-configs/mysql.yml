@@ -1,0 +1,12 @@
+  mysql:
+    container_name: <%= docker.name %>-db
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_DATABASE=homestead
+      - MYSQL_USER=homestead
+      - MYSQL_PASSWORD=secret
+    volumes:
+      - ./.docker/mysql/db:/var/lib/mysql
+    networks:
+      - <%= docker.name %>-network

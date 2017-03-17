@@ -1,0 +1,9 @@
+redis:
+    image: redis:alpine
+    networks:
+     - <%= docker.name %>-network
+     command: redis-server --appendonly yes
+     volumes:
+      - ./docker/redis:/data
+      environment:
+      - REDIS_PORT=6379
